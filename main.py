@@ -21,14 +21,7 @@ def back_welcome(call):
     mark.add(Button_1, Button_2)
     bot.send_message(call.message.chat.id, "Компьютер запущен.", reply_markup = mark)
 
-def screen_shot(call):
-    mark = types.InlineKeyboardMarkup()
-    Button_screen = types.InlineKeyboardButton(text = 'Выключить компьютер', callback_data = 'pc_off')
-    mark.add(Button_1, Button_screen)
 
-    screenshot = ImageGrab.grab()
-    
-    bot.send_photo(call.message.chat.id, screenshot, reply_markup=mark)
 
 def pc_off(call):
     os.system("shutdown /s /t 0")
@@ -38,9 +31,7 @@ def pc_off(call):
 def bot_sistem(call):
     global user_choise
     user_choise = ''
-    if call.data == 'screen':
-        screen_shot(call)
-    elif call.data == 'list':
+    if call.data == 'list':
         list(call)
     elif call.data == 'pc_off':    
         pc_off(call)
